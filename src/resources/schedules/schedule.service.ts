@@ -1,11 +1,12 @@
-import { scheduleRepository } from './schedule.memory.repository.js';
+import { scheduleRepository } from './schedule.memory.repository';
+import { ISchedule } from './schedule.model';
 
 export class ScheduleService {
-  getAll() {
+  getAll(): ISchedule[] {
     return scheduleRepository.findAll();
   }
 
-  getByTourId(tourId) {
+  getByTourId(tourId: string): ISchedule[] {
     return scheduleRepository.findByTourId(tourId);
   }
 }

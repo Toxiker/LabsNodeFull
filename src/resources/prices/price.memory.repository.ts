@@ -1,13 +1,13 @@
-import { Price } from './price.model.js';
+import { Price, IPrice } from './price.model';
 
-const prices = [];
+const prices: IPrice[] = [];
 
 export class PriceRepository {
-  findAll() {
+  findAll(): IPrice[] {
     return [...prices];
   }
   
-  create(priceData) {
+  create(priceData: Omit<IPrice, 'id' | 'createdAt' | 'updatedAt'>): IPrice {
     const newPrice = new Price(priceData);
     prices.push(newPrice);
     return newPrice;

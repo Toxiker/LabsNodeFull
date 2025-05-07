@@ -1,13 +1,13 @@
-import { Schedule } from './schedule.model.js';
+import { ISchedule } from './schedule.model';
 
-const schedules = [];
+const schedules: ISchedule[] = [];
 
 export class ScheduleRepository {
-  findAll() {
+  findAll(): ISchedule[] {
     return [...schedules];
   }
 
-  findByTourId(tourId) {
+  findByTourId(tourId: string): ISchedule[] {
     return schedules.filter(s => s.tourId === tourId);
   }
 }

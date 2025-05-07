@@ -1,9 +1,9 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import { priceService } from './price.service.js';
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/', (_req: Request, res: Response) => {
   res.json(priceService.getAllPrices());
 });
 

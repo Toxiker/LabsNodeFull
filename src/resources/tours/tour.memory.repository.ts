@@ -1,23 +1,23 @@
 import { Tour } from './tour.model.js';
 
-const tours = [];
+const tours: Tour[] = [];
 
 export class TourRepository {
-  findAll() {
+  findAll(): Tour[] {
     return [...tours];
   }
 
-  findById(id) {
+  findById(id: string): Tour | undefined {
     return tours.find(tour => tour.id === id);
   }
 
-  create(tourData) {
+  create(tourData: Partial<Tour>): Tour {
     const newTour = new Tour(tourData);
     tours.push(newTour);
     return newTour;
   }
 
-  delete(id) {
+  delete(id: string): boolean {
     const index = tours.findIndex(tour => tour.id === id);
     if (index === -1) return false;
     tours.splice(index, 1);

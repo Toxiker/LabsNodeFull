@@ -1,41 +1,41 @@
 import { Schedule } from './schedule.model.js';
 
-const schedules = [];
+const schedules: Schedule[] = [];
 
 export class ScheduleRepository {
-  findAll() {
+  findAll(): Schedule[] {
     return [...schedules];
   }
 
-  findByTourId(tourId) {
+  findByTourId(tourId: string): Schedule[] {
     return schedules.filter(s => s.tourId === tourId);
   }
 
-  findById(id) {
+  findById(id: string): Schedule | undefined {
     return schedules.find(s => s.id === id);
   }
 
-  create(scheduleData) {
+  create(scheduleData: Partial<Schedule>): Schedule {
     const newSchedule = new Schedule(scheduleData);
     schedules.push(newSchedule);
     return newSchedule;
   }
 
-  delete(id) {
+  delete(id: string): boolean {
     const index = schedules.findIndex(s => s.id === id);
     if (index === -1) return false;
     schedules.splice(index, 1);
     return true;
   }
 
-  update(id, scheduleData) {
+  update(id: string, scheduleData: Partial<Schedule>): Schedule | null {
     const schedule = this.findById(id);
     if (!schedule) return null;
     Object.assign(schedule, scheduleData, { updatedAt: new Date() });
     return schedule;
   }
 
-  findByScheduleId(scheduleId) {
+  findByScheduleId(scheduleId: string): Schedule[] {
     return schedules.filter(s => s.id === scheduleId);
   }
 }

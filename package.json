@@ -46,8 +46,11 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "@types/express": "^5.0.2",
+    "@typescript-eslint/eslint-plugin": "^8.32.1",
+    "@typescript-eslint/parser": "^8.32.1",
     "debug": "^4.3.1",
-    "eslint": "^7.2.0",
+    "eslint": "^8.57.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.22.1",
@@ -55,6 +58,7 @@
     "eslint-plugin-prettier": "^3.4.0",
     "lint-staged": "^10.5.4",
     "nodemon": "^2.0.7",
-    "prettier": "^2.2.1"
+    "prettier": "^2.2.1",
+    "typescript": "^5.8.3"
   }
 }

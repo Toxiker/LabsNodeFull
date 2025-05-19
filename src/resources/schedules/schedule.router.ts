@@ -13,10 +13,10 @@ router.get('/tour/:tourId', (req: Request, res: Response) => {
   res.json(scheduleService.getByTourId(tourId));
 });
 
-router.get('/:id', (req: Request, res: Response) => {
+router.get('/:id', (req: Request, res: Response, next) => {
   const id = req.params['id'] as string;
   const schedule = scheduleService.getById(id);
-  if (!schedule) return res.status(404).send('Schedule not found');
+  if (!schedule) return next(new Error('Schedule not found'));
   res.json(schedule);
 });
 
@@ -31,17 +31,17 @@ router.post('/', (req: Request, res: Response) => {
   res.status(201).json(newSchedule);
 });
 
-router.put('/:id', (req: Request, res: Response) => {
+router.put('/:id', (req: Request, res: Response, next) => {
   const id = req.params['id'] as string;
   const updatedSchedule = scheduleService.update(id, req.body);
-  if (!updatedSchedule) return res.status(404).send('Schedule not found');
+  if (!updatedSchedule) return next(new Error('Schedule not found'));
   res.json(updatedSchedule);
 });
 
-router.delete('/:id', (req: Request, res: Response) => {
+router.delete('/:id', (req: Request, res: Response, next) => {
   const id = req.params['id'] as string;
   const deleted = scheduleService.delete(id);
-  if (!deleted) return res.status(404).send('Schedule not found');
+  if (!deleted) return next(new Error('Schedule not found'));
   res.sendStatus(204);
 });
 

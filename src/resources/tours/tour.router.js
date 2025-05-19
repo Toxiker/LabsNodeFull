@@ -13,9 +13,20 @@ router.get('/:id', (req, res) => {
   res.json(tour);
 });
 
+router.get('/:id/schedules', (req, res) => {
+  const schedules = tourService.getSchedulesByTourId(req.params.id);
+  res.json(schedules);
+});
+
 router.post('/', (req, res) => {
   const newTour = tourService.create(req.body);
   res.status(201).json(newTour);
+});
+
+router.put('/:id', (req, res) => {
+  const updatedTour = tourService.update(req.params.id, req.body);
+  if (!updatedTour) return res.status(404).send('Tour not found');
+  res.json(updatedTour);
 });
 
 router.delete('/:id', (req, res) => {

@@ -30,3 +30,18 @@ POST /prices
 
   GET /tours/<id_тура>/schedules — вернуть все расписания этого тура.
 GET /schedules/<id_расписания>/prices — вернуть все цены этого расписания.
+
+## Запуск через Docker
+
+1. Скопируйте `.env.example` в `.env` и настройте переменные (если требуется).
+2. Соберите и запустите контейнеры:
+   ```
+   docker compose up --build
+   ```
+3. Приложение будет доступно на [http://localhost:4000](http://localhost:4000)
+4. pgAdmin — на [http://localhost:5050](http://localhost:5050)
+
+Для остановки контейнеров используйте:
+```
+docker compose down
+```

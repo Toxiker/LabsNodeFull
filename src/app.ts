@@ -2,7 +2,6 @@ import express, { Request, Response, NextFunction } from 'express';
 import { tourRouter } from './resources/tours/tour.router.js';
 import { scheduleRouter } from './resources/schedules/schedule.router.js';
 import { priceRouter } from './resources/prices/price.router.js';
-import { PORT } from './common/config.js';
 import morgan from 'morgan';
 import { logger } from './common/logger.js';
 
@@ -41,20 +40,16 @@ app.get('/test-error', (req: Request, res: Response) => {
 });
 
 // Middleware для обработки ошибок
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
   logger.error('Необработанная ошибка в приложении', {
     error: err.message,
     stack: err.stack,
-    path: req.path,
-    method: req.method,
-    query: req.query,
-    body: req.body,
     timestamp: new Date().toISOString()
   });
   res.status(500).send('Internal Server Error');
 });
 
-app.use('/', (req: Request, res: Response) => {
+app.use('/', (_req: Request, res: Response) => {
   res.send('Service is running!');
 });
 

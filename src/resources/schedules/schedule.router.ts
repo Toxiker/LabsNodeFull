@@ -4,7 +4,7 @@ import { priceService } from '../prices/price.service.js';
 
 const router = express.Router();
 
-router.get('/', (req: Request, res: Response) => {
+router.get('/', (_req: Request, res: Response) => {
   res.json(scheduleService.getAll());
 });
 

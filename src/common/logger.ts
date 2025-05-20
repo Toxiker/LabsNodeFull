@@ -1,7 +1,6 @@
 import winston from 'winston';
 import path from 'path';
 import fs from 'fs';
-import os from 'os';
 
 const { combine, timestamp, printf, colorize, errors } = winston.format;
 

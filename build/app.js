@@ -18,16 +18,31 @@ app.use(morgan(':method :url :status :res[content-length] - :response-time ms :q
 app.use('/tours', tourRouter);
 app.use('/schedules', scheduleRouter);
 app.use('/prices', priceRouter);
+// Тестовый маршрут для проверки логирования ошибок
+app.get('/test-error', (req, res) => {
+    const error = new Error('Тестовая ошибка для проверки логирования');
+    logger.error('Ошибка в тестовом маршруте', {
+        error: error.message,
+        stack: error.stack,
+        path: req.path,
+        method: req.method,
+        query: req.query,
+        body: req.body,
+        timestamp: new Date().toISOString()
+    });
+    res.status(500).send('Test error logged');
+});
 // Middleware для обработки ошибок
-app.use((err, req, res, next) => {
-    logger.error(err.stack || err.message);
+app.use((err, _req, res, _next) => {
+    logger.error('Необработанная ошибка в приложении', {
+        error: err.message,
+        stack: err.stack,
+        timestamp: new Date().toISOString()
+    });
     res.status(500).send('Internal Server Error');
 });
-app.use('/', (req, res) => {
+app.use('/', (_req, res) => {
     res.send('Service is running!');
-});
-app.get('/error', (req, res) => {
-    throw new Error('Test error for logger');
 });
 export default app;
 //# sourceMappingURL=app.js.map

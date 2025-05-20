@@ -3,7 +3,7 @@ import { priceService } from './price.service.js';
 
 const router = express.Router();
 
-router.get('/', (req: Request, res: Response) => {
+router.get('/', (_req: Request, res: Response) => {
   res.json(priceService.getAllPrices());
 });
 

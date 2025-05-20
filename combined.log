@@ -34,3 +34,5 @@
 2025-05-19 21:14:11 [info]: GET /tours/12345 404 14 - 0.766 ms {} {}
 2025-05-19 21:15:14 [info]: DELETE /tours/12345 404 14 - 0.467 ms {} {}
 2025-05-19 21:16:57 [info]: POST /tours 201 224 - 0.415 ms {} {"title":"Тур по Минску","slug":"minsk-tour","description":"Экскурсия по Минску","isActive":true}
+2025-05-20 12:19:41 [info]: POST /tours 201 224 - 9.606 ms {} {"title":"Тур по Минску","slug":"minsk-tour","description":"Экскурсия по Минску","isActive":true}
+2025-05-20 12:21:24 [info]: GET /prices/12345 404 15 - 2.200 ms {} {}
